@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid var(--brand-stone-bg);
 }
 
 header nav {
@@ -149,8 +150,25 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  width: auto;
+  height: 40px;
+}
+
+/* brand link/nav styling for Arrowhead */
+header nav .nav-sections a:any-link {
+  color: var(--brand-navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+header nav .nav-sections a:hover {
+  color: var(--brand-bronze);
+}
+
+@media (width >= 900px) {
+  header nav .nav-brand img {
+    height: 44px;
+  }
 }
 
 /* sections */

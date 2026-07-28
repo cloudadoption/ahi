@@ -7,6 +7,9 @@ helix-importer-ui
 .DS_Store
 *.bak
 .idea
+.superpowers/*
+.claude/
+.agents/
 
 # Ensure these files are tracked
 !CLAUDE.md
