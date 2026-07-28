@@ -21,9 +21,31 @@ export default function decorate(block) {
   const media = document.createElement('div');
   media.className = 'hero-media';
 
+  const mediaRow = picture ? rows.find((r) => r.contains(picture)) : null;
   rows.forEach((row) => {
-    if (picture && row.contains(picture)) {
-      media.append(picture);
+    if (mediaRow && row === mediaRow) {
+      // background video (a linked .mp4) with the image as poster/fallback
+      const videoLink = [...row.querySelectorAll('a')]
+        .find((a) => /\.mp4(\?|$)/i.test(a.getAttribute('href') || ''));
+      if (videoLink) {
+        const video = document.createElement('video');
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('aria-hidden', 'true');
+        const img = picture.querySelector('img');
+        if (img) video.poster = img.src;
+        const source = document.createElement('source');
+        source.src = videoLink.getAttribute('href');
+        source.type = 'video/mp4';
+        video.append(source);
+        media.append(video);
+        videoLink.remove();
+      } else {
+        media.append(picture);
+      }
       const shortcuts = row.querySelector('ul');
       if (shortcuts) {
         shortcuts.className = 'hero-shortcuts';
