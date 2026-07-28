@@ -11,17 +11,25 @@
  */
 
 :root {
+  /* Arrowhead brand */
+  --brand-navy: #1b2a51;
+  --brand-ink: #231f20;
+  --brand-gray: #7c796e;
+  --brand-stone: #b9b5a3;
+  --brand-stone-bg: #f1f0ed;
+  --brand-bronze: #8b7f57;
+
   /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --background-color: #fff;
+  --light-color: var(--brand-stone-bg);
+  --dark-color: var(--brand-navy);
+  --text-color: var(--brand-ink);
+  --link-color: var(--brand-navy);
+  --link-hover-color: var(--brand-bronze);
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: helvetica, arial, sans-serif;
+  --heading-font-family: var(--body-font-family);
 
   /* body sizes */
   --body-font-size-m: 22px;
