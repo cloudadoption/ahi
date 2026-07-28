@@ -29,11 +29,12 @@ export default function decorate(block) {
       if (dateP) dateP.classList.add('cards-card-date');
     });
 
-    // "Load More" — reveal cards a row (3) at a time (opt-in via `load-more`)
+    // "Load More" — reveal cards a row (3) at a time.
+    // Paginates by default; opt out with the `show-all` variant (e.g. /news).
     const cards = [...block.querySelectorAll(':scope > ul > li')];
     const initial = 3;
     const step = 3;
-    if (block.classList.contains('load-more') && cards.length > initial) {
+    if (!block.classList.contains('show-all') && cards.length > initial) {
       let shown = initial;
       const apply = () => cards.forEach((li, i) => { li.hidden = i >= shown; });
       apply();
