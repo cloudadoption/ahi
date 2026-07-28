@@ -93,6 +93,10 @@
   flex-direction: column;
 }
 
+.cards.news > ul > li[hidden] {
+  display: none;
+}
+
 .cards.news .cards-card-body {
   display: flex;
   flex-direction: column;

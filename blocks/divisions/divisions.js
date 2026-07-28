@@ -11,6 +11,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
+  let bg = null;
   const list = document.createElement('div');
   list.className = 'divisions-list';
 
@@ -20,11 +21,10 @@ export default function decorate(block) {
 
     if (cells.length === 1 && picture && !row.querySelector('h1, h2, h3')) {
       // background image
-      const bg = document.createElement('div');
+      bg = document.createElement('div');
       bg.className = 'divisions-bg';
       const img = picture.querySelector('img');
-      bg.append(createOptimizedPicture(img.src, '', false, [{ width: '2000' }]));
-      block.prepend(bg);
+      if (img) bg.append(createOptimizedPicture(img.src, '', false, [{ width: '2000' }]));
       return;
     }
 
@@ -65,5 +65,7 @@ export default function decorate(block) {
     list.append(card);
   });
 
+  block.textContent = '';
+  if (bg) block.append(bg);
   block.append(list);
 }
