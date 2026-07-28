@@ -29,18 +29,34 @@ export default function decorate(block) {
         .find((a) => /\.mp4(\?|$)/i.test(a.getAttribute('href') || ''));
       if (videoLink) {
         const video = document.createElement('video');
-        video.autoplay = true;
         video.loop = true;
         video.muted = true;
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');
         video.setAttribute('aria-hidden', 'true');
+        video.preload = 'none';
         const img = picture.querySelector('img');
         if (img) video.poster = img.src;
-        const source = document.createElement('source');
-        source.src = videoLink.getAttribute('href');
-        source.type = 'video/mp4';
-        video.append(source);
+
+        // Show the poster instantly; defer the (heavy) video fetch until
+        // after the page has loaded so it stays off the critical path.
+        const src = videoLink.getAttribute('href');
+        const startVideo = () => {
+          if (video.querySelector('source')) return;
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.append(source);
+          video.load();
+          const played = video.play();
+          if (played && played.catch) played.catch(() => { /* poster remains */ });
+        };
+        if (document.readyState === 'complete') {
+          window.setTimeout(startVideo, 600);
+        } else {
+          window.addEventListener('load', () => window.setTimeout(startVideo, 600), { once: true });
+        }
+
         media.append(video);
         videoLink.remove();
       } else {
