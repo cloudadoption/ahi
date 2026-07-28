@@ -28,7 +28,7 @@
   --link-hover-color: var(--brand-bronze);
 
   /* fonts */
-  --body-font-family: helvetica, arial, sans-serif;
+  --body-font-family: 'Helvetica Neue', helvetica, arial, sans-serif;
   --heading-font-family: var(--body-font-family);
 
   /* body sizes */
@@ -187,11 +187,13 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  border-radius: 0;
+  padding: 0.7em 1.6em;
   font: inherit;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -330,4 +332,50 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* full-bleed blocks (break out of the 1200px content column) */
+main > .section > .hero-wrapper,
+main > .section > .stats-wrapper,
+main > .section > .divisions-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* navy call-to-action section (e.g. "Meet our leaders") */
+main .section.leaders {
+  background-color: var(--brand-navy);
+  color: #fff;
+  margin: 0;
+  padding: 3.5rem 0;
+}
+
+main .section.leaders h1,
+main .section.leaders h2,
+main .section.leaders h3,
+main .section.leaders p {
+  color: #fff;
+}
+
+main .section.leaders a.button.primary {
+  background-color: #fff;
+  border-color: #fff;
+  color: var(--brand-navy);
+}
+
+main .section.leaders a.button.primary:hover {
+  background-color: var(--brand-stone);
+  border-color: var(--brand-stone);
+  color: var(--brand-navy);
+}
+
+main .section.leaders a.button.primary::after {
+  content: ' \2192';
+}
+
+/* leadership group headings with a bronze accent bar */
+main .section.group h2 {
+  border-left: 4px solid var(--brand-bronze);
+  padding-left: 1rem;
+  line-height: 1.1;
 }

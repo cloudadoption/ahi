@@ -1,0 +1,113 @@
+.divisions {
+  position: relative;
+  padding: 3rem 1rem;
+  overflow: hidden;
+}
+
+.divisions .divisions-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.divisions .divisions-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(255 255 255 / 82%);
+}
+
+.divisions .divisions-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.divisions .divisions-list {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.divisions .divisions-heading {
+  margin-bottom: 0.5rem;
+}
+
+.divisions .divisions-heading h1,
+.divisions .divisions-heading h2,
+.divisions .divisions-heading h3 {
+  margin: 0;
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-align: center;
+}
+
+.divisions .divisions-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 2px 14px rgb(27 42 81 / 12%);
+}
+
+.divisions .divisions-label {
+  background: var(--brand-stone-bg);
+  color: var(--brand-ink);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.85rem 1.75rem;
+  transition: background 0.2s ease;
+}
+
+.divisions a.divisions-card:hover .divisions-label {
+  background: var(--brand-stone);
+}
+
+.divisions .divisions-card-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: #fff;
+  padding: 1.75rem;
+}
+
+.divisions .divisions-logo {
+  line-height: 0;
+}
+
+.divisions .divisions-logo img {
+  width: auto;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+.divisions .divisions-desc p {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+}
+
+.divisions .divisions-desc strong {
+  color: var(--brand-navy);
+}
+
+@media (width >= 900px) {
+  .divisions {
+    padding: 5rem 2rem;
+  }
+
+  .divisions .divisions-card-inner {
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+    padding: 2.25rem 2.5rem;
+  }
+
+  .divisions .divisions-logo {
+    text-align: center;
+  }
+}
