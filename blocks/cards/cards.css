@@ -25,3 +25,51 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards.features > ul,
+.cards.news > ul {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.cards.people > ul {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (width >= 900px) {
+  .cards.people > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cards.people .cards-card-image img {
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.cards.people .name {
+  font-weight: 700;
+  color: var(--brand-navy);
+  margin: 0.5rem 0 0;
+}
+
+.cards.people .title {
+  color: var(--brand-gray);
+  margin: 0;
+}
+
+.cards.news .cards-card-date {
+  color: var(--brand-bronze);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.cards.divisions .cards-card-image img {
+  width: auto;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.cards.divisions .cards-card-body {
+  text-align: center;
+}

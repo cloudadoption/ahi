@@ -14,4 +14,19 @@ export default function decorate(block) {
   });
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.replaceChildren(ul);
+
+  if (block.classList.contains('people')) {
+    block.querySelectorAll('.cards-card-body').forEach((body) => {
+      const ps = body.querySelectorAll('p');
+      if (ps[0]) ps[0].classList.add('name');
+      if (ps[1]) ps[1].classList.add('title');
+    });
+  }
+  if (block.classList.contains('news')) {
+    block.querySelectorAll('.cards-card-body').forEach((body) => {
+      const ps = [...body.querySelectorAll('p')];
+      const dateP = ps.find((p) => !p.querySelector('a') && /\b(19|20)\d{2}\b/.test(p.textContent));
+      if (dateP) dateP.classList.add('cards-card-date');
+    });
+  }
 }
