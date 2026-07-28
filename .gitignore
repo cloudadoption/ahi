@@ -8,6 +8,8 @@ helix-importer-ui
 *.bak
 .idea
 .superpowers/*
+.claude/
+.agents/
 
 # Ensure these files are tracked
 !CLAUDE.md
