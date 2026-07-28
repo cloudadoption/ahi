@@ -10,6 +10,7 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  getMetadata,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -74,11 +75,35 @@ function buildWidgetAutoBlocks(main) {
 }
 
 /**
+ * Builds an article-header block from the H1 and publish-date on news article pages.
+ * @param {Element} main The container element
+ */
+function buildNewsArticleAutoBlock(main) {
+  const path = window.location.pathname.replace(/\/$/, '');
+  // only individual news articles (/news/<slug>), not the /news index
+  if (!/^\/news\/.+/.test(path)) return;
+  const h1 = main.querySelector('h1');
+  if (!h1 || h1.closest('.article-header')) return;
+
+  const eyebrow = document.createElement('p');
+  eyebrow.textContent = 'News';
+  const date = document.createElement('p');
+  date.textContent = getMetadata('publish-date');
+
+  const block = buildBlock('article-header', [[eyebrow], [h1.cloneNode(true)], [date]]);
+  const section = document.createElement('div');
+  section.append(block);
+  main.prepend(section);
+  h1.remove();
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
+    buildNewsArticleAutoBlock(main);
     // auto load `*/fragments/*` references
     const fragments = [...main.querySelectorAll('a[href*="/fragments/"]')].filter((f) => !f.closest('.fragment'));
     if (fragments.length > 0) {
