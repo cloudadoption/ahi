@@ -85,6 +85,8 @@ function buildNewsArticleAutoBlock(main) {
   const h1 = main.querySelector('h1');
   if (!h1 || h1.closest('.article-header')) return;
 
+  main.classList.add('news-article');
+
   const eyebrow = document.createElement('p');
   eyebrow.textContent = 'News';
   const date = document.createElement('p');

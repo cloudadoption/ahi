@@ -4,7 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
-  border-bottom: 1px solid var(--brand-stone-bg);
+  border-bottom: 6px solid var(--brand-stone);
 }
 
 header nav {
@@ -41,6 +41,7 @@ header nav[aria-expanded='true'] {
     justify-content: space-between;
     gap: 0 32px;
     max-width: 1264px;
+    min-height: 130px;
     padding: 0 32px;
   }
 
@@ -151,13 +152,16 @@ header .nav-brand {
 
 header nav .nav-brand img {
   width: auto;
-  height: 40px;
+  height: 48px;
 }
 
 /* brand link/nav styling for Arrowhead */
 header nav .nav-sections a:any-link {
   color: var(--brand-navy);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   text-decoration: none;
 }
 
@@ -166,8 +170,14 @@ header nav .nav-sections a:hover {
 }
 
 @media (width >= 900px) {
+  header nav .nav-sections ul {
+    gap: 40px;
+  }
+}
+
+@media (width >= 900px) {
   header nav .nav-brand img {
-    height: 44px;
+    height: 56px;
   }
 }
 

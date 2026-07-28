@@ -28,5 +28,26 @@ export default function decorate(block) {
       const dateP = ps.find((p) => !p.querySelector('a') && /\b(19|20)\d{2}\b/.test(p.textContent));
       if (dateP) dateP.classList.add('cards-card-date');
     });
+
+    // "Load More" — reveal cards a row (3) at a time.
+    // Paginates by default; opt out with the `show-all` variant (e.g. /news).
+    const cards = [...block.querySelectorAll(':scope > ul > li')];
+    const initial = 3;
+    const step = 3;
+    if (!block.classList.contains('show-all') && cards.length > initial) {
+      let shown = initial;
+      const apply = () => cards.forEach((li, i) => { li.hidden = i >= shown; });
+      apply();
+      const more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'cards-load-more';
+      more.textContent = 'Load More';
+      more.addEventListener('click', () => {
+        shown += step;
+        apply();
+        if (shown >= cards.length) more.remove();
+      });
+      block.append(more);
+    }
   }
 }

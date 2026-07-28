@@ -2,19 +2,21 @@
   display: grid;
   gap: 2rem;
   text-align: center;
-  padding: 3rem 1rem;
-  background: var(--brand-navy);
-  color: #fff;
+  padding: 60px 1rem;
+  background: var(--brand-stone-bg);
+  color: var(--brand-ink);
 }
 
 .stats .stat-value {
   font-size: 3rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--brand-navy);
+  line-height: 1.1;
 }
 
 .stats .stat-label {
-  color: var(--brand-stone);
+  color: var(--brand-ink);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

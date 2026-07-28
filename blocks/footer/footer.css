@@ -7,19 +7,22 @@ footer {
 footer .footer > div {
   margin: auto;
   max-width: 1200px;
-  padding: 48px 24px 32px;
+  padding: 48px 24px;
   display: grid;
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
 }
 
 footer .footer p {
-  margin: 0;
+  margin: 0 0 8px;
   color: #fff;
 }
 
 footer .footer img {
   width: auto;
-  height: 56px;
+  height: 60px;
+  margin-bottom: 12px;
 }
 
 footer .footer a:any-link {
@@ -31,27 +34,27 @@ footer .footer a:hover {
   color: var(--brand-stone);
 }
 
-footer .footer ul {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 20px 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 20px;
-  border-top: 1px solid rgb(255 255 255 / 20%);
-}
-
-footer .footer ul a:any-link {
-  text-decoration: none;
+/* legal links column (second section) */
+footer .footer > div > div:last-child {
   color: var(--brand-stone);
 }
 
-footer .footer ul a:hover {
+footer .footer > div > div:last-child a:any-link {
+  color: var(--brand-stone);
+  text-decoration: none;
+}
+
+footer .footer > div > div:last-child a:hover {
   color: #fff;
 }
 
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 56px 32px 32px;
+    grid-template-columns: 1fr 1fr;
+    padding: 56px 32px;
+  }
+
+  footer .footer > div > div:last-child {
+    text-align: right;
   }
 }

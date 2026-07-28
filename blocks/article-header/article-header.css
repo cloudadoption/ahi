@@ -1,8 +1,7 @@
 .article-header {
-  background: var(--brand-navy);
-  color: #fff;
-  padding: 3rem 1.5rem;
-  text-align: center;
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid var(--brand-stone);
+  margin-bottom: 2rem;
 }
 
 .article-header .article-header-eyebrow {
@@ -11,25 +10,22 @@
   letter-spacing: 0.1em;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--brand-stone);
+  color: var(--brand-bronze);
 }
 
 .article-header .article-header-title h1,
 .article-header .article-header-title h2 {
   margin: 0;
-  color: #fff;
-  max-width: 50rem;
-  margin-inline: auto;
+  color: var(--brand-navy);
 }
 
 .article-header .article-header-date {
   margin: 1rem 0 0;
-  color: var(--brand-stone);
+  color: var(--brand-gray);
   font-size: 0.9rem;
 }
 
-@media (width >= 900px) {
-  .article-header {
-    padding: 4.5rem 2rem;
-  }
+/* news article pages: narrow reading column */
+main.news-article > .section > div {
+  max-width: 768px;
 }
